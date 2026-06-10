@@ -11,15 +11,15 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg:        #0E0E0D;
-  --bg2:       #161614;
-  --bg3:       #1E1E1B;
-  --ink:       #F0EDE6;
-  --ink-soft:  #A8A49C;
-  --ink-muted: #5A5850;
-  --neon:      #DDFF47;
-  --red:       #FF2D20;
-  --border:    rgba(255,255,255,0.08);
+  --bg:        #e42820;
+  --bg2:       #d1231b;
+  --bg3:       #b31e17;
+  --ink:       #ffffff;
+  --ink-soft:  #fceae9;
+  --ink-muted: rgba(255,255,255,0.6);
+  --neon:      #ffec00;
+  --red:       #ffffff;
+  --border:    rgba(255,255,255,0.15);
   --font-display: 'Syne', system-ui, sans-serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
 }
@@ -46,7 +46,7 @@ nav {
   transition: border-color 0.4s, background 0.4s;
 }
 nav.scrolled {
-  background: rgba(14,14,13,0.92);
+  background: rgba(228, 40, 32, 0.95);
   border-color: var(--border);
   backdrop-filter: blur(12px);
 }
@@ -133,15 +133,15 @@ nav.scrolled {
   font-size: 0.68rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  border: 1px solid var(--border);
-  color: var(--ink-muted);
+  border: 1px solid rgba(255, 236, 0, 0.4);
+  color: var(--neon);
   padding: 0.3rem 0.8rem;
 }
 .scroll-hint {
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ink-muted);
+  color: var(--neon);
 }
 section { padding: 8rem 4rem; }
 .section-header {
@@ -217,7 +217,7 @@ section { padding: 8rem 4rem; }
   display: block;
 }
 .manifesto {
-  background: var(--bg2);
+  background: var(--bg3);
   padding: 8rem 4rem;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -291,21 +291,22 @@ section { padding: 8rem 4rem; }
   overflow: hidden;
   background: var(--bg3);
   aspect-ratio: 16/9;
+  border: 1px solid var(--border);
 }
 .video-item.featured { grid-column: 1 / -1; aspect-ratio: 21/9; }
 .video-thumb {
   width: 100%; height: 100%;
   object-fit: cover;
-  opacity: 0.6;
+  opacity: 0.75;
   transition: opacity 0.5s, transform 0.7s;
   display: block;
 }
-.video-item:hover .video-thumb { opacity: 0.4; transform: scale(1.04); }
+.video-item:hover .video-thumb { opacity: 0.55; transform: scale(1.04); }
 .video-meta {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   padding: 3rem 2rem 2rem;
-  background: linear-gradient(to top, rgba(14,14,13,0.95) 20%, transparent 100%);
+  background: linear-gradient(to top, rgba(179, 30, 23, 0.98) 20%, transparent 100%);
   transition: transform 0.4s ease;
 }
 .video-item:hover .video-meta { transform: translateY(-5px); }
@@ -369,7 +370,7 @@ section { padding: 8rem 4rem; }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--neon);
-  border: 1px solid rgba(221, 255, 71, 0.3);
+  border: 1px solid rgba(255, 236, 0, 0.3);
   padding: 0.2rem 0.6rem;
   font-weight: 600;
 }
@@ -419,7 +420,7 @@ section { padding: 8rem 4rem; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 40%, rgba(14,14,13,0.7));
+  background: linear-gradient(to bottom, transparent 40%, rgba(179, 30, 23, 0.8));
   opacity: 0;
   transition: opacity 0.4s;
   pointer-events: none;
@@ -476,7 +477,7 @@ section { padding: 8rem 4rem; }
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-muted);
+  color: var(--neon);
   margin-top: 1rem;
 }
 .about-display {
@@ -514,7 +515,7 @@ section { padding: 8rem 4rem; }
   font-size: 0.65rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ink-muted);
+  color: var(--neon);
   display: block;
   margin-bottom: 0.35rem;
 }
@@ -552,7 +553,7 @@ section { padding: 8rem 4rem; }
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--neon);
   display: block;
   margin-bottom: 1rem;
 }
@@ -594,7 +595,7 @@ section { padding: 8rem 4rem; }
   padding: 1rem 2.2rem;
   transition: background 0.25s, transform 0.2s;
 }
-.btn-primary:hover { background: #c8e830; transform: translateY(-1px); }
+.btn-primary:hover { background: #e6d500; transform: translateY(-1px); }
 .contact-item {
   display: flex;
   flex-direction: column;
@@ -606,7 +607,7 @@ section { padding: 8rem 4rem; }
   font-size: 0.65rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ink-muted);
+  color: var(--neon);
   margin-bottom: 0.35rem;
 }
 .contact-item-val {
@@ -904,11 +905,11 @@ footer {
       <p class="about-img-caption">Romayssae Doudouh &#8212; Venlo, 2025</p>
     </div>
     <div>
-      <h2 class="about-display reveal">Social work<br>door <span class="hl">mijn</span><br>lens.</h2>
+      <h2 class="about-display reveal">Sociale verhalen<br>vastgelegd op<br><span class="hl">beeld.</span></h2>
       <div class="about-body">
-        <p class="reveal">Ik begon met fotograferen omdat ik merkte dat mijn aandacht steeds naar de mens ging &#8212; niet alleen naar wat er zichtbaar is, maar naar wat er verder leeft. De emotie achter een blik. De spanning in een stilte. De kracht in kwetsbaarheid.</p>
-        <p class="reveal">Als mediavormgever en aankomend documentairemaker stel ik mezelf steeds dezelfde vraag: welke verhalen verdienen een podium? Ik geloof in de kracht van ondervertegenwoordigde perspectieven &#8212; verhalen die zelden een stem krijgen maar de samenleving fundamenteel raken.</p>
-        <p class="reveal">Mijn drijfveer is om ooit een maatschappelijk taboe eindelijk uit de doofpot te halen. Een verhaal dat bewust wordt verzwegen. <strong>Dat is geen assignment &#8212; dat is een missie.</strong></p>
+        <p class="reveal">Ik begon met fotograferen omdat ik merkte dat mijn aandacht steeds naar de mens ging &#8212; niet alleen naar wat er zichtbaar is, maar naar wat er verder leeft. De emotie achter een blik, de spanning in een stilte of de kracht in kwetsbaarheid.</p>
+        <p class="reveal">Als mediavormgever en aankomend documentairemaker zoek ik naar verhalen die een podium verdienen. Ik geloof in de kracht van ondervertegenwoordigde perspectieven &#8212; verhalen die zelden een stem krijgen maar de samenleving fundamenteel raken.</p>
+        <p class="reveal">Mijn drijfveer is om maatschappelijke thema's die vaak onbesproken blijven, bespreekbaar te maken. Voor mij is dat de kern van waarom ik dit werk doe: het zichtbaar maken van wat er werkelijk toe doet.</p>
       </div>
       <div class="about-facts reveal">
         <div class="fact"><span class="fact-label">Gebaseerd in</span><span class="fact-val">Venlo, Nederland</span></div>
