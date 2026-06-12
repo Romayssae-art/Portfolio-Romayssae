@@ -7,20 +7,20 @@
 <meta name="description" content="Romayssae Doudouh is een multidisciplinair creatief, documentairemaker en visueel onderzoeker." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Inter:wght@400;700;800&display=swap" rel="stylesheet" />
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg:        #e42820;
-  --bg2:       #d1231b;
-  --bg3:       #b31e17;
-  --ink:       #ffffff;
-  --ink-soft:  #fceae9;
-  --ink-muted: rgba(255,255,255,0.6);
-  --neon:      #ffec00;
-  --red:       #ffffff;
-  --border:    rgba(255,255,255,0.15);
-  --font-display: 'Syne', system-ui, sans-serif;
+  --bg:        #0E0E0D;
+  --bg2:       #161614;
+  --bg3:       #1E1E1B;
+  --ink:       #F0EDE6;
+  --ink-soft:  #A8A49C;
+  --ink-muted: #5A5850;
+  --neon:      #DDFF47;
+  --red:       #FF2D20;
+  --border:    rgba(255,255,255,0.08);
+  --font-display: 'Inter', system-ui, sans-serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
 }
 html { scroll-behavior: smooth; font-size: 16px; }
@@ -28,7 +28,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
-  font-weight: 300;
+  font-weight: 700;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -46,7 +46,7 @@ nav {
   transition: border-color 0.4s, background 0.4s;
 }
 nav.scrolled {
-  background: rgba(228, 40, 32, 0.95);
+  background: rgba(14, 14, 13, 0.92);
   border-color: var(--border);
   backdrop-filter: blur(12px);
 }
@@ -306,7 +306,7 @@ section { padding: 8rem 4rem; }
   position: absolute;
   bottom: 0; left: 0; right: 0;
   padding: 3rem 2rem 2rem;
-  background: linear-gradient(to top, rgba(179, 30, 23, 0.98) 20%, transparent 100%);
+  background: linear-gradient(to top, rgba(14, 14, 13, 0.95) 20%, transparent 100%);
   transition: transform 0.4s ease;
 }
 .video-item:hover .video-meta { transform: translateY(-5px); }
@@ -420,7 +420,7 @@ section { padding: 8rem 4rem; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 40%, rgba(179, 30, 23, 0.8));
+  background: linear-gradient(to bottom, transparent 40%, rgba(14, 14, 13, 0.7));
   opacity: 0;
   transition: opacity 0.4s;
   pointer-events: none;
@@ -624,32 +624,63 @@ section { padding: 8rem 4rem; }
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgba(0,0,0,0.95);
+  background: rgba(10, 10, 9, 0.98);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s;
+  transition: opacity 0.4s cubic-bezier(0.2, 1, 0.3, 1);
 }
 .modal-overlay.open { opacity: 1; pointer-events: all; }
-.modal-inner { width: min(90vw, 960px); position: relative; }
-.modal-inner iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
+.modal-inner { 
+  width: min(95vw, 1200px); 
+  height: 85vh;
+  position: relative; 
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  background: var(--bg2);
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+.modal-media { background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.modal-media iframe, .modal-media video, .modal-media img { 
+  width: 100%; height: 100%; object-fit: contain; display: block; 
+}
+.modal-details { 
+  padding: 3rem; 
+  overflow-y: auto; 
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.modal-project-title { font-family: var(--font-display); font-size: 1.6rem; color: var(--ink); text-transform: uppercase; line-height: 1.1; }
+.modal-project-meta { display: flex; flex-direction: column; gap: 0.6rem; }
+.modal-meta-item { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon); font-weight: 700; }
+.modal-meta-val { font-size: 0.9rem; color: var(--ink-soft); }
+.modal-project-context { font-size: 0.95rem; line-height: 1.7; color: var(--ink-soft); }
+
 .modal-close {
   position: absolute;
-  top: -2.5rem; right: 0;
-  color: var(--ink-soft);
-  font-family: var(--font-display);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  top: 1.5rem; right: 1.5rem;
+  color: #fff;
+  font-size: 1.1rem;
   cursor: pointer;
-  background: none;
+  z-index: 10;
+  background: rgba(0,0,0,0.5);
+  width: 36px; height: 36px;
+  border-radius: 50%;
   border: none;
-  transition: color 0.2s;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
 }
-.modal-close:hover { color: var(--neon); }
+.modal-close:hover { background: var(--neon); color: var(--bg); transform: rotate(90deg); }
+
+@media (max-width: 900px) {
+  .modal-inner { grid-template-columns: 1fr; grid-template-rows: 40vh 1fr; height: 90vh; }
+  .modal-details { border-left: none; border-top: 1px solid var(--border); padding: 2rem; }
+}
 footer {
   padding: 2.5rem 4rem;
   border-top: 1px solid var(--border);
@@ -723,8 +754,8 @@ footer {
 <nav id="main-nav">
   <a href="#top" class="nav-logo">ROMS<span class="dot">.</span></a>
   <ul class="nav-links">
-    <li><a href="#werk">Werk</a></li>
     <li><a href="#over">Over</a></li>
+    <li><a href="#werk">Werk</a></li>
     <li><a href="#aanpak">Aanpak</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -733,49 +764,75 @@ footer {
 <section id="top" class="hero">
   <div class="hero-eyebrow">Documentairemaker &amp; Creatief Onderzoeker</div>
   <h1 class="hero-headline">
-    Verhalen die<br>
-    <span class="hl">verder</span><br>
-    kijken.
+    BEELDEN DIE<br>
+    <span class="hl">VERDER</span><br>
+    GRAVEN.
   </h1>
   <div class="hero-bottom">
-    <p class="hero-statement">Ik maak werk dat begint bij menselijke drijfveren — niet bij formats of trends. Als filmmaker, fotograaf en mediavormgever zoek ik altijd naar wat er achter het zichtbare leeft.</p>
+    <p class="hero-statement">Ik begin niet bij formats of trends, maar bij wat mensen drijft. Als filmmaker en fotograaf zoek ik naar dat wat we wel voelen, maar bijna nooit hardop uitspreken.</p>
     <div class="hero-right">
       <div class="hero-tags">
+        <span class="tag">Storytelling</span>
+        <span class="tag">Sociaal Impact</span>
         <span class="tag">Documentaire</span>
-        <span class="tag">Sociaal impact</span>
-        <span class="tag">Culturele verhalen</span>
-        <span class="tag">Visueel onderzoek</span>
-        <span class="tag">Fotografie</span>
+        <span class="tag">Onderzoek</span>
+        <span class="tag">Perspectief</span>
       </div>
-      <span class="scroll-hint">&#8595; Scroll om te ontdekken</span>
+      <span class="scroll-hint">&#8595; Ontdek het verhaal</span>
     </div>
   </div>
 </section>
 
 <section id="ethos">
   <div class="section-header">
-    <span class="section-label">Wie is Roms</span>
+    <span class="section-label">De Kern</span>
     <span class="section-num">01</span>
   </div>
   <div class="ethos-grid">
     <h2 class="ethos-headline reveal">
       Empathie is mijn<br>
       <span class="hl">scherpste</span><br>
-      gereedschap.
+      lens.
     </h2>
     <div class="ethos-body">
-      <p class="reveal">Ik ben Romayssae Doudouh — 19 jaar, filmmaker, fotograaf en mediavormgever in opleiding. Aangedreven door één diepe fascinatie: wat mensen vanbinnen voelen, maar nooit hardop uitspreken.</p>
-      <p class="reveal">Al van jongs af aan bleef mijn blik hangen bij dingen die anderen voorbijgaan. De stilte na een gesprek. De spanning achter een glimlach. Het verhaal dat bewust wordt verzwegen. Anderen noemen me een empatisch persoon — ik zie het als mijn werkwijze.</p>
-      <p class="reveal">Mijn werk staat aan het snijvlak van <strong>journalistieke nieuwsgierigheid</strong>, visueel design en sociale betrokkenheid. Ik maak geen content — ik maak betekenis.</p>
+      <p class="reveal">Ik ben Romayssae Doudouh. Filmmaker, fotograaf en mediavormgever in opleiding, maar vooral iemand met een onstilbare honger naar het 'waarom'. Waarom kijken mensen weg? Waarom glimlacht iemand terwijl de ogen iets anders vertellen? Ik zie de dingen die anderen vaak over het hoofd zien: de stilte na een zwaar gesprek of de spanning achter een lach.</p>
+      <p class="reveal">Voor mij is empathie geen abstract begrip, maar mijn manier van werken. Ik geloof dat een camera pas echt iets waard is als je de tijd neemt om de persoon aan de andere kant te begrijpen. Mijn werk bevindt zich op het snijvlak van journalistieke nieuwsgierigheid en visuele kunst. Ik maak geen plaatjes, ik maak betekenis.</p>
     </div>
   </div>
   <div class="values-strip">
-    <div class="val-item reveal"><span class="val-num">—</span><span class="val-name">Menselijke verhalen</span></div>
-    <div class="val-item reveal"><span class="val-num">—</span><span class="val-name">Sociaal impact</span></div>
-    <div class="val-item reveal"><span class="val-num">—</span><span class="val-name">Nieuwsgierigheid</span></div>
-    <div class="val-item reveal"><span class="val-num">—</span><span class="val-name">Cultuur</span></div>
-    <div class="val-item reveal"><span class="val-num">—</span><span class="val-name">Authenticiteit</span></div>
-    <div class="val-item reveal"><span class="val-num">—</span><span class="val-name">Representation</span></div>
+    <div class="val-item reveal"><span class="val-num">01</span><span class="val-name">Eerlijk Beeld</span></div>
+    <div class="val-item reveal"><span class="val-num">02</span><span class="val-name">Sociale Impact</span></div>
+    <div class="val-item reveal"><span class="val-num">03</span><span class="val-name">Onderzoek</span></div>
+    <div class="val-item reveal"><span class="val-num">04</span><span class="val-name">Cultuur</span></div>
+    <div class="val-item reveal"><span class="val-num">05</span><span class="val-name">Echtheid</span></div>
+    <div class="val-item reveal"><span class="val-num">06</span><span class="val-name">Representatie</span></div>
+  </div>
+</section>
+
+<section id="over">
+  <div class="section-header">
+    <span class="section-label">De Maker</span>
+    <span class="section-num">02</span>
+  </div>
+  <div class="about-grid">
+    <div class="about-img-col reveal">
+      <img class="about-portrait" src="https://framerusercontent.com/images/g1CETpFFOdNUkJxXPUv67tNSLs.jpg" alt="Romayssae Doudouh" onerror="this.style.background='#1E1E1B'" />
+      <p class="about-img-caption">Vakantie 2025: Ik in m'n natuurlijke habitat</p>
+    </div>
+    <div>
+      <h2 class="about-display reveal">Social work<br>door mijn<br><span class="hl">lens.</span></h2>
+      <div class="about-body">
+        <p class="reveal">Hoi, ik ben Romayssae. Maar zeg gerust Roms. Ik ben 19 en loop eigenlijk altijd rond met een camera of een diepe vraag in mijn achterhoofd. Terwijl anderen op een feestje praten over het weer, vraag ik me af waarom die ene persoon in de hoek zo peinzend kijkt. Ik ben een filmmaker, fotograaf en mediavormgever in de dop, maar vooral: een professioneel observant.</p>
+        <p class="reveal">Mijn missie? Verhalen vangen die anders tussen de wal en het schip vallen. De dingen die we wel voelen, maar niet durven te zeggen of waarvan we het bestaan simpelweg ontkennen. Ik geloof in de kracht van perspectieven die normaal worden overgeslagen. Verhalen die de samenleving fundamenteel raken, ook als ze soms een beetje schuren.</p>
+        <p class="reveal">Ik ben een tikkeltje eigenwijs, enorm nieuwsgierig en ik geloof dat een beeld pas echt raakt als er een rauw randje aan zit. Dat is voor mij geen opdracht, maar een missie die ik elke dag met me meedraag.</p>
+      </div>
+      <div class="about-facts reveal">
+        <div class="fact"><span class="fact-label">Thuisbasis</span><span class="fact-val">Venlo, Nederland flexibel (open voor verhuizing)</span></div>
+        <div class="fact"><span class="fact-label">Opleiding</span><span class="fact-val">Bijna afgestudeerd in 2027 als Mediavormgever</span></div>
+        <div class="fact"><span class="fact-label">Favoriete boek</span><span class="fact-val">Socrates op Sneakers</span></div>
+        <div class="fact"><span class="fact-label">Obsessie</span><span class="fact-val">Documentaire &amp; verhalen beeld geven</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -794,128 +851,130 @@ footer {
 
 <section id="werk">
   <div class="section-header">
-    <span class="section-label">Showcase</span>
-    <span class="section-num">02</span>
-  </div>
-  <p class="werk-intro reveal">Van sporters en merken tot maatschappelijke thema&#8217;s &#8212; dit is het werk dat me echt ligt. Storytelling die raakt.</p>
-  <div class="werk-tabs">
-    <button class="werk-tab active" data-tab="video">Video &amp; Film</button>
-    <button class="werk-tab" data-tab="foto">Fotografie</button>
-  </div>
-  <div class="werk-panel active" id="panel-video">
-    <div class="video-grid">
-      <div class="video-item featured reveal" data-video="wnWKVr4Thc4">
-        <img class="video-thumb" src="https://i.ytimg.com/vi/wnWKVr4Thc4/maxresdefault.jpg" alt="Storytelling video" onerror="this.src='https://i.ytimg.com/vi/wnWKVr4Thc4/sddefault.jpg'" />
-        <div class="play-btn"><svg viewBox="0 0 16 16"><polygon points="3,1 14,8 3,15"/></svg></div>
-        <div class="video-meta">
-          <div class="video-top-meta">
-            <span class="video-cat">Cinematic storytelling</span>
-            <span class="video-year">2026</span>
-          </div>
-          <div class="video-title">'t Nostalgisch Vriendenboekje PROMO 2026</div>
-          <p class="video-desc">Een tijdloze promo voor de lancering van 't Nostalgisch Vriendenboekje. De video bevat dialoog met meerdere gesprekspartners en is een uitnodiging om vroegere nostalgische herinneringen te 'unlocken'.</p>
-          <div class="video-roles">
-            <span class="role-tag">Creative Director</span>
-            <span class="role-tag">DoP</span>
-            <span class="role-tag">Color Grading</span>
-          </div>
-        </div>
-      </div>
-      <div class="video-item reveal" style="cursor:default;">
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-          <svg width="40" height="40" viewBox="0 0 48 48" fill="none" opacity="0.2"><circle cx="24" cy="24" r="22" stroke="#F0EDE6" stroke-width="1.5"/><polygon points="19,14 35,24 19,34" fill="#F0EDE6"/></svg>
-        </div>
-        <div class="video-meta">
-          <div class="video-top-meta">
-            <span class="video-cat">Campagne ad</span>
-            <span class="video-year">2026</span>
-          </div>
-          <div class="video-title">Merk &amp; Maatschappij</div>
-          <p class="video-desc">Een commerciële campagne die de brug slaat tussen merkidentiteit en sociaal-maatschappelijke betrokkenheid.</p>
-          <div class="video-roles">
-            <span class="role-tag">Creative Director</span>
-            <span class="role-tag">DoP</span>
-            <span class="role-tag">Color Grading</span>
-          </div>
-        </div>
-      </div>
-      <div class="video-item reveal" data-video="ltTPrMoVSjc">
-        <img class="video-thumb" src="https://i.ytimg.com/vi/ltTPrMoVSjc/maxresdefault.jpg" alt="Boksen in Venlo" onerror="this.src='https://i.ytimg.com/vi/ltTPrMoVSjc/sddefault.jpg'" />
-        <div class="play-btn"><svg viewBox="0 0 16 16"><polygon points="3,1 14,8 3,15"/></svg></div>
-        <div class="video-meta">
-          <div class="video-top-meta">
-            <span class="video-cat">Sport visuals</span>
-            <span class="video-year">2026</span>
-          </div>
-          <div class="video-title">De Atleet Achter Het Scherm</div>
-          <p class="video-desc">Een rauw en openhartig portret van een veertienjarige bokser uit Venlo. In een indringende dialoog onderzoeken we de noodzaak van fysieke uiting en de kwetsbaarheid achter de handschoen. Een verhaal over discipline, identiteit en de zoektocht naar een eigen stem in de ring.</p>
-          <div class="video-roles">
-            <span class="role-tag">Creative Director</span>
-            <span class="role-tag">DoP</span>
-            <span class="role-tag">Color Grading</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="werk-panel" id="panel-foto">
-    <div class="photo-grid">
-      <!-- Verplaatste reeks naar boven -->
-      <div class="photo-item reveal"><img src="Fotografie/IMG_2987.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item reveal"><img src="Fotografie/IMG_3105.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item tall reveal"><img src="Fotografie/IMG_3283.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item reveal"><img src="Fotografie/IMG_3324.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item tall reveal"><img src="Fotografie/IMG_3610.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item reveal"><img src="Fotografie/IMG_3853.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item wide reveal"><img src="Fotografie/IMG_3991.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item reveal"><img src="Fotografie/IMG_4359.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item reveal"><img src="Fotografie/IMG_4887.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item tall reveal"><img src="Fotografie/IMG_5439.jpg" alt="Portret" loading="lazy" /></div>
-      
-      <div class="photo-item tall reveal">
-        <img src="Fotografie/IMG_5593.jpg" alt="Portret" loading="lazy" />
-        <div class="photo-info">
-          <span class="photo-label">Cinematisch</span>
-          <span class="photo-title">Blik</span>
-        </div>
-      </div>
-      <div class="photo-item reveal"><img src="Fotografie/IMG_5510.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item wide reveal"><img src="Fotografie/IMG_8598.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item reveal"><img src="Fotografie/IMG_9629.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item reveal"><img src="Fotografie/IMG_9297.jpg" alt="Visueel verhaal" loading="lazy" /></div>
-      <div class="photo-item reveal"><img src="Fotografie/IMG_0536.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item wide reveal"><img src="Fotografie/IMG_8550.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item reveal"><img src="Fotografie/IMG_9219.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item reveal"><img src="Fotografie/IMG_6505.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item tall reveal"><img src="Fotografie/IMG_5874.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item reveal"><img src="Fotografie/IMG_6667.jpg" alt="Portret" loading="lazy" /></div>
-      <div class="photo-item reveal"><img src="Fotografie/IMG_6240.jpg" alt="Portret" loading="lazy" /></div>
-    </div>
-  </div>
-</section>
-
-<section id="over">
-  <div class="section-header">
-    <span class="section-label">De Maker</span>
+    <span class="section-label">Geselecteerd Werk</span>
     <span class="section-num">03</span>
   </div>
-  <div class="about-grid">
-    <div class="about-img-col reveal">
-      <img class="about-portrait" src="https://framerusercontent.com/images/g1CETpFFOdNUkJxXPUv67tNSLs.jpg" alt="Romayssae Doudouh" onerror="this.style.background='#1E1E1B'" />
-      <p class="about-img-caption">Romayssae Doudouh &#8212; Venlo, 2025</p>
-    </div>
-    <div>
-      <h2 class="about-display reveal">Sociale verhalen<br>vastgelegd op<br><span class="hl">beeld.</span></h2>
-      <div class="about-body">
-        <p class="reveal">Ik begon met fotograferen omdat ik merkte dat mijn aandacht steeds naar de mens ging &#8212; niet alleen naar wat er zichtbaar is, maar naar wat er verder leeft. De emotie achter een blik, de spanning in een stilte of de kracht in kwetsbaarheid.</p>
-        <p class="reveal">Als mediavormgever en aankomend documentairemaker zoek ik naar verhalen die een podium verdienen. Ik geloof in de kracht van ondervertegenwoordigde perspectieven &#8212; verhalen die zelden een stem krijgen maar de samenleving fundamenteel raken.</p>
-        <p class="reveal">Mijn drijfveer is om maatschappelijke thema's die vaak onbesproken blijven, bespreekbaar te maken. Voor mij is dat de kern van waarom ik dit werk doe: het zichtbaar maken van wat er werkelijk toe doet.</p>
+  <p class="werk-intro reveal">Dit is waar mijn nieuwsgierigheid vorm krijgt. Geen snelle content, maar verhalen die tijd nodig hebben gehad om te groeien.</p>
+  
+  <div class="werk-tabs">
+    <button class="werk-tab active" data-tab="video">Film & Docu</button>
+    <button class="werk-tab" data-tab="foto">Fotografie</button>
+    <button class="werk-tab" data-tab="vormgeving">Vormgeving</button>
+  </div>
+
+  <div class="werk-panel active" id="panel-video">
+    <div class="video-grid">
+      <!-- Project 1 -->
+      <div class="video-item featured reveal" 
+           data-type="project"
+           data-title="'t Nostalgisch Vriendenboekje"
+           data-cat="promo-video"
+           data-year="2026"
+           data-video="wnWKVr4Thc4"
+           data-role="Regie, DoP, Edit"
+           data-context="Een visuele uitnodiging om herinneringen te 'unlocken'. In een world die steeds sneller gaat, zochten we naar de vertraging van vroeger. Ik was verantwoordelijk voor het volledige visuele concept en de intieme sfeer in de gesprekken.">
+        <img class="video-thumb" src="https://i.ytimg.com/vi/wnWKVr4Thc4/maxresdefault.jpg" alt="Vriendenboekje" loading="lazy" decoding="async" />
+        <div class="play-btn"><svg viewBox="0 0 16 16"><polygon points="3,1 14,8 3,15"/></svg></div>
+        <div class="video-meta">
+          <div class="video-top-meta">
+            <span class="video-cat">Project: promo-video</span>
+            <span class="video-year">2026</span>
+          </div>
+          <div class="video-title">'t Nostalgisch Vriendenboekje</div>
+          <div class="role-tag">Creative Lead</div>
+        </div>
       </div>
-      <div class="about-facts reveal">
-        <div class="fact"><span class="fact-label">Gebaseerd in</span><span class="fact-val">Venlo, Nederland</span></div>
-        <div class="fact"><span class="fact-label">Opleiding</span><span class="fact-val">Mediavormgeving</span></div>
-        <div class="fact"><span class="fact-label">Beschikbaar</span><span class="fact-val">NL &amp; Internationaal</span></div>
-        <div class="fact"><span class="fact-label">Focus</span><span class="fact-val">Documentaire &amp; Impact</span></div>
+
+      <!-- Project 2 -->
+      <div class="video-item reveal" 
+           data-type="project"
+           data-title="van binnenuit"
+           data-cat="storytelling"
+           data-year="2026"
+           data-video="ltTPrMoVSjc"
+           data-role="Cinematography, Regie"
+           data-context="Een rauw portret van een jonge bokser uit Venlo. We duiken in de noodzaak van fysieke uiting en de kwetsbaarheid achter de handschoen. Mijn aanpak was om zo onzichtbaar mogelijk te zijn, om de echte emotie te vangen.">
+        <img class="video-thumb" src="https://i.ytimg.com/vi/ltTPrMoVSjc/maxresdefault.jpg" alt="Bokser" loading="lazy" decoding="async" />
+        <div class="play-btn"><svg viewBox="0 0 16 16"><polygon points="3,1 14,8 3,15"/></svg></div>
+        <div class="video-meta">
+          <div class="video-top-meta">
+            <span class="video-cat">Project: storytelling</span>
+            <span class="video-year">2026</span>
+          </div>
+          <div class="video-title">van binnenuit</div>
+        </div>
+      </div>
+
+      <!-- Project 3 (Dummy placeholder for impact) -->
+      <div class="video-item reveal" style="cursor:default;">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center; background: var(--bg2);">
+          <span style="font-size: 0.7rem; letter-spacing: 0.2em; opacity: 0.3;">NEW PROJECT COMING SOON</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="werk-panel" id="panel-foto">
+    <div class="photo-grid">
+      <!-- Top Images requested -->
+      <div class="photo-item reveal" data-type="project" data-title="De Blik"><img src="Fotografie/IMG_8550.jpg" alt="Portret" loading="lazy" decoding="async" /></div>
+      <div class="photo-item wide reveal" data-type="project" data-title="De Blik"><img src="Fotografie/IMG_8598.jpg" alt="Portret panorama" loading="lazy" decoding="async" /></div>
+
+      <!-- Project: van binnenuit (Boksserie) -->
+      <div class="photo-item wide reveal" 
+           data-type="project"
+           data-title="van binnenuit"
+           data-cat="storytelling / fotografie"
+           data-role="Fotograaf"
+           data-context="">
+        <img src="Fotografie/IMG_0536.jpg" alt="Boksen" loading="lazy" decoding="async" />
+      </div>
+      <div class="photo-item reveal" data-type="project" data-title="van binnenuit"><img src="Fotografie/IMG_9219.jpg" alt="Boksen detail" loading="lazy" decoding="async" /></div>
+      <div class="photo-item reveal" data-type="project" data-title="van binnenuit"><img src="Fotografie/IMG_9297.jpg" alt="Bokser in ring" loading="lazy" decoding="async" /></div>
+      <div class="photo-item reveal" data-type="project" data-title="van binnenuit"><img src="Fotografie/IMG_9629.jpg" alt="Boksen sfeer" loading="lazy" decoding="async" /></div>
+
+      <!-- Project: De Blik (Portretreeks) -->
+      <div class="photo-item tall reveal" 
+           data-type="project"
+           data-title="De Blik"
+           data-cat="Portret"
+           data-role="Fotograaf"
+           data-context="Een zoektocht naar de mens achter de pose. In deze reeks staat de interactie tussen de maker en het model centraal, waarbij we proberen de grens tussen 'geposeerd' en 'echt' te laten vervagen.">
+        <img src="Fotografie/IMG_5593.jpg" alt="Portret rood haar" loading="lazy" decoding="async" />
+      </div>
+      <div class="photo-item reveal" data-type="project" data-title="De Blik"><img src="Fotografie/IMG_3105.jpg" alt="Portret beweging" loading="lazy" decoding="async" /></div>
+      <div class="photo-item reveal" data-type="project" data-title="De Blik"><img src="Fotografie/IMG_3283.jpg" alt="Portret liggend" loading="lazy" decoding="async" /></div>
+      <div class="photo-item reveal" data-type="project" data-title="De Blik"><img src="Fotografie/IMG_3324.jpg" alt="Portret close" loading="lazy" decoding="async" /></div>
+      <div class="photo-item wide reveal" data-type="project" data-title="De Blik"><img src="Fotografie/IMG_3991.jpg" alt="Portret abstract" loading="lazy" decoding="async" /></div>
+      <div class="photo-item reveal" data-type="project" data-title="De Blik"><img src="Fotografie/IMG_2987.jpg" alt="Portret" loading="lazy" decoding="async" /></div>
+      <div class="photo-item reveal" data-type="project" data-title="De Blik"><img src="Fotografie/IMG_3610.jpg" alt="Portret" loading="lazy" decoding="async" /></div>
+      <div class="photo-item reveal" data-type="project" data-title="De Blik"><img src="Fotografie/IMG_3853.jpg" alt="Portret" loading="lazy" decoding="async" /></div>
+      <div class="photo-item reveal" data-type="project" data-title="De Blik"><img src="Fotografie/IMG_4359.jpg" alt="Portret" loading="lazy" decoding="async" /></div>
+      <div class="photo-item reveal" data-type="project" data-title="De Blik"><img src="Fotografie/IMG_4887.jpg" alt="Portret" loading="lazy" decoding="async" /></div>
+      <div class="photo-item tall reveal" data-type="project" data-title="De Blik"><img src="Fotografie/IMG_5439.jpg" alt="Portret" loading="lazy" decoding="async" /></div>
+    </div>
+  </div>
+
+  <div class="werk-panel" id="panel-vormgeving">
+    <div class="video-grid">
+      <div class="video-item featured reveal" 
+           data-type="project"
+           data-title="Rebranding Opleiding Mediavormgeving"
+           data-cat="Huisstijl / Rebranding"
+           data-year="2026"
+           data-role="Designer"
+           data-context="Voor dit project ontwierp ik volledig een nieuw huisstijl voor mijn opleiding. Ik heb uitgebreid onderzocht wie de doelgroep is, en welke vormen en stijlen daarbij passen om een frisse en relevante identiteit neer te zetten.">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center; background: var(--bg3);">
+          <span style="font-size: 0.8rem; letter-spacing: 0.2em; color: var(--neon);">PROJECT: REBRANDING</span>
+        </div>
+        <div class="video-meta">
+          <div class="video-top-meta">
+            <span class="video-cat">Project: Huisstijl</span>
+            <span class="video-year">2026</span>
+          </div>
+          <div class="video-title">Rebranding Opleiding Mediavormgeving</div>
+          <div class="role-tag">Brand Identity</div>
+        </div>
       </div>
     </div>
   </div>
@@ -923,24 +982,24 @@ footer {
 
 <section id="aanpak">
   <div class="section-header">
-    <span class="section-label">Werkwijze</span>
+    <span class="section-label">De Methode</span>
     <span class="section-num">04</span>
   </div>
   <div class="approach-steps">
     <div class="approach-step reveal">
       <span class="step-num">01</span>
-      <span class="step-title">Verbinden</span>
-      <p class="step-body">Voordat ik ook maar één shot bedenk, duik ik in het verhaal. Wie ben je? Wat wil je zeggen? Echte verbinding is de basis van elk goed visueel werk.</p>
+      <span class="step-title">Vertrouwen Bouwen</span>
+      <p class="step-body">Echt beeld begint bij een kop koffie, niet bij de record-knop. Ik neem de tijd om te levelen met de mensen voor mijn lens. Pas als er wederzijds vertrouwen is, komen de verhalen die er echt toe doen naar boven.</p>
     </div>
     <div class="approach-step reveal">
       <span class="step-num">02</span>
-      <span class="step-title">Onderzoeken</span>
-      <p class="step-body">Ik benader elk project als onderzoeker. Context, cultuur, maatschappelijke laag &#8212; zodat het eindresultaat verder gaat dan alleen esthetiek.</p>
+      <span class="step-title">Visueel Onderzoek</span>
+      <p class="step-body">Ik benader elk project als een onderzoeker. Ik duik in de context, observeer de omgeving en zoek naar de symboliek in het alledaagse. Hoe vertaal je een complex maatschappelijk thema naar een beeld dat je bij de keel grijpt?</p>
     </div>
     <div class="approach-step reveal">
       <span class="step-num">03</span>
-      <span class="step-title">Vertellen</span>
-      <p class="step-body">Met beeld, licht en compositie geef ik vorm aan wat woorden alleen niet kunnen zeggen. Van eerste opname tot laatste edit &#8212; elk detail telt.</p>
+      <span class="step-title">Rauwe Vertelling</span>
+      <p class="step-body">In de montage of nabewerking zoek ik de grens op tussen esthetiek en realiteit. Geen overgepolijste filters, maar een eerlijke weergave met karakter. Elk shot moet een reden hebben om daar te zijn.</p>
     </div>
   </div>
 </section>
@@ -953,14 +1012,15 @@ footer {
   <div class="contact-grid">
     <div>
       <h2 class="contact-display reveal">Een verhaal<br>dat verteld<br>moet <span class="hl">worden?</span></h2>
-      <p class="contact-sub reveal">Of je nu een merk, een maatschappelijk vraagstuk of een artistiek project hebt &#8212; als het een verhaal is dat mensen raakt, wil ik er meer over horen.</p>
+      <p class="contact-sub reveal">Of je nu een merk, een maatschappelijk vraagstuk of een artistiek project hebt, als het een verhaal is dat mensen raakt, wil ik er meer over horen.</p>
       <a href="mailto:hello.metroms@outlook.com" class="btn-primary reveal">Neem contact op</a>
     </div>
     <div class="reveal">
-      <div class="contact-item"><span class="contact-item-label">E-mail</span><a href="mailto:hello.metroms@outlook.com" class="contact-item-val">hello.metroms@outlook.com</a></div>
+      <div class="contact-item"><span class="contact-item-label">Zakelijk</span><a href="mailto:hello.metroms@outlook.com" class="contact-item-val">hello.metroms@outlook.com</a></div>
+      <div class="contact-item"><span class="contact-item-label">Privé</span><a href="mailto:romayssaedoudouh2@gmail.com" class="contact-item-val">romayssaedoudouh2@gmail.com</a></div>
       <div class="contact-item"><span class="contact-item-label">Instagram</span><a href="https://instagram.com/maakmetroms" target="_blank" rel="noopener" class="contact-item-val">@maakmetroms</a></div>
       <div class="contact-item"><span class="contact-item-label">Locatie</span><span class="contact-item-val">Venlo, Nederland</span></div>
-      <div class="contact-item"><span class="contact-item-label">Status</span><span class="contact-item-val">Open voor projecten &#8212; 2026</span></div>
+      <div class="contact-item"><span class="contact-item-label">Status</span><span class="contact-item-val">Open voor projecten: 2026</span></div>
     </div>
   </div>
 </section>
@@ -977,9 +1037,25 @@ footer {
 
 <div class="modal-overlay" id="modal">
   <div class="modal-inner">
-    <button class="modal-close" id="modal-close">&#x2715; Sluiten</button>
-    <iframe id="modal-iframe" src="" title="Video" allowfullscreen allow="autoplay; fullscreen" style="display:none; width:100%; height:100%; border:none;"></iframe>
-    <video id="modal-video" controls style="display:none; width:100%; max-height:80vh; background:#000;"></video>
+    <button class="modal-close" id="modal-close">✕</button>
+    <div class="modal-media">
+      <iframe id="modal-iframe" src="" title="Video" allowfullscreen allow="autoplay; fullscreen" style="display:none; border:none;"></iframe>
+      <video id="modal-video" controls style="display:none; background:#000;"></video>
+      <img id="modal-img" src="" style="display:none;" alt="Project Beeld" />
+    </div>
+    <div class="modal-details" id="modal-details">
+      <div class="modal-project-meta">
+        <span class="modal-meta-item" id="modal-meta-cat">Project</span>
+        <h2 class="modal-project-title" id="modal-title">Titel</h2>
+      </div>
+      <div class="modal-project-context">
+        <p id="modal-context">Context...</p>
+      </div>
+      <div class="modal-project-meta">
+        <span class="modal-meta-item">Mijn Rol</span>
+        <span class="modal-meta-val" id="modal-role">Regie & Edit</span>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -997,62 +1073,56 @@ footer {
   }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
   revealEls.forEach(el => observer.observe(el));
 
-  document.querySelectorAll('.werk-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.werk-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.werk-panel').forEach(p => p.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
-    });
-  });
-
   const modal = document.getElementById('modal');
   const iframe = document.getElementById('modal-iframe');
   const modalVideo = document.getElementById('modal-video');
+  const modalImg = document.getElementById('modal-img');
+  const modalTitle = document.getElementById('modal-title');
+  const modalContext = document.getElementById('modal-context');
+  const modalRole = document.getElementById('modal-role');
+  const modalCat = document.getElementById('modal-meta-cat');
 
-  document.querySelectorAll('.video-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const videoId = item.dataset.video;
-      const videoSrc = item.dataset.videoSrc;
-
-      if (videoId) {
-        iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
-        iframe.style.display = 'block';
-        modalVideo.style.display = 'none';
-        modalImg.style.display = 'none';
-        modalVideo.src = '';
-      } else if (videoSrc) {
-        modalVideo.src = videoSrc;
-        modalVideo.style.display = 'block';
-        iframe.style.display = 'none';
-        modalImg.style.display = 'none';
-        iframe.src = '';
-        modalVideo.play();
-      } else {
-        return;
-      }
+  function openProject(item) {
+    const data = item.dataset;
+    const isProject = data.type === 'project';
+    
+    // Reset state
+    iframe.style.display = 'none'; iframe.src = '';
+    modalVideo.style.display = 'none'; modalVideo.src = ''; modalVideo.pause();
+    modalImg.style.display = 'none'; modalImg.src = '';
+    
+    if (isProject) {
+      modalTitle.innerText = data.title || '';
+      modalContext.innerText = data.context || '';
+      modalRole.innerText = data.role || '';
+      modalCat.innerText = data.cat || 'Project';
       
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  const modalImg = document.createElement('img');
-  modalImg.style.cssText = 'max-width:100%; max-height:90vh; object-fit:contain; display:none; margin:0 auto;';
-  document.querySelector('.modal-inner').appendChild(modalImg);
-
-  document.querySelectorAll('.photo-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const img = item.querySelector('img');
-      if (img) {
-        modalImg.src = img.src;
-        modalImg.style.display = 'block';
-        iframe.style.display = 'none';
-        modalVideo.style.display = 'none';
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
+      if (data.video) {
+        iframe.src = 'https://www.youtube.com/embed/' + data.video + '?autoplay=1&rel=0';
+        iframe.style.display = 'block';
+      } else {
+        const img = item.querySelector('img');
+        if (img) {
+          modalImg.src = img.src;
+          modalImg.style.display = 'block';
+        }
       }
-    });
+    } else {
+      // Loose images
+      modalTitle.innerText = 'Beeld';
+      modalContext.innerText = 'Detailopname uit het archief.';
+      modalRole.innerText = 'Fotografie';
+      modalCat.innerText = 'Sfeer';
+      const img = item.querySelector('img');
+      if (img) { modalImg.src = img.src; modalImg.style.display = 'block'; }
+    }
+    
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  document.querySelectorAll('.video-item, .photo-item').forEach(item => {
+    item.addEventListener('click', () => openProject(item));
   });
 
   document.getElementById('modal-close').addEventListener('click', closeModal);
@@ -1061,13 +1131,25 @@ footer {
 
   function closeModal() {
     modal.classList.remove('open');
-    iframe.src = '';
-    modalVideo.src = '';
-    modalVideo.pause();
-    modalImg.style.display = 'none';
-    modalImg.src = '';
+    iframe.src = ''; modalVideo.pause(); modalVideo.src = '';
     document.body.style.overflow = '';
   }
+
+  document.querySelectorAll('.werk-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.werk-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.werk-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
+List.add('active');
+      document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+    });
+  });
 </script>
 </body>
 </html>
